@@ -10,8 +10,8 @@ use pocketmine\Server;
 class LevelMap
 {
 
-    public const NOTHING = 0;
-    public const DEFAULT = 1;
+    public const NOTHING = "nothing";
+    public const DEFAULT = "default";
 
 
     /*
@@ -20,7 +20,7 @@ class LevelMap
      * возвращает true если удачно сгенерировался в ином случае такой мир уже создан
      * или ошибка ядро. Метод корректно работает под PocketMine 3.17.2
      */
-    public function generate(string $name, int $type = self::DEFAULT): bool
+    public function generate(string $name, string $type = self::NOTHING): bool
     {
         switch ($type)
         {
@@ -29,13 +29,12 @@ class LevelMap
                 $class = Nothing::class;
                 break;
 
-            case self::DEFAULT:
+            // можно добавить flat
+
+            default:
                 $generator = ["default"];
                 $class = Normal::class;
                 break;
-
-            default:
-                throw new InvalidArgumentException("отсутсвует генератор с типом {$type}");
         }
 
         return Server::getInstance()->generateLevel($name, null, $class, $generator);

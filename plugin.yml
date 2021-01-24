@@ -6,3 +6,5 @@ author: Serenity-Sun
 commands:
   generate:
     description: создание мира
+  unload:
+    description: выгрузка мира

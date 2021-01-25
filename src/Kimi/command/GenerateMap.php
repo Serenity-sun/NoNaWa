@@ -5,10 +5,10 @@ namespace Kimi\command;
 use Kimi\another\LevelMap;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
 
 class GenerateMap extends Command
 {
+    use Verify;
 
 
     public function __construct(string $name)
@@ -27,12 +27,8 @@ class GenerateMap extends Command
      */
     public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
-        if($sender instanceof Player) {
-            if(!$sender->isOp()) {
-                $sender->sendMessage("§l§c|§f только операторы могут использовать эту команду");
-                return;
-            }
-        }
+        if($this->checkOP($sender))
+            return;
 
         if(!isset($args[0])) {
             $sender->sendMessage("§l§c|§f использование: generate [имя мира] [тип генерации: nothing | default]");
@@ -44,7 +40,7 @@ class GenerateMap extends Command
             return;
         }
 
-        switch ($args[0])
+        switch ($args[1])
         {
             case "nothing":
                 (new LevelMap())->generate($args[0], LevelMap::NOTHING);

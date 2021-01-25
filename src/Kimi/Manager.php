@@ -3,6 +3,7 @@
 namespace Kimi;
 
 
+use Kimi\command\BootMap;
 use Kimi\command\GenerateMap;
 use Kimi\generator\Nothing;
 use pocketmine\level\generator\GeneratorManager;
@@ -24,5 +25,6 @@ class Manager extends PluginBase
         $map = $this->getServer()->getCommandMap();
 
         $map->register("generate", new GenerateMap("generate"));
+        $map->register("boot", new BootMap("boot"));
     }
 }

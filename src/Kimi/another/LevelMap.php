@@ -46,7 +46,7 @@ class LevelMap
      * принимает название мира и сохранение как аргумент
      * ничего не возвращает
      */
-    public function unload(string $name, bool $save = true): void
+    public function unload(string $name, bool $save = true): bool
     {
         $level = Server::getInstance()->getLevelByName($name);
 
@@ -56,6 +56,6 @@ class LevelMap
         if ($save === true)
             $level->save(true);
 
-        Server::getInstance()->unloadLevel($level);
+        return Server::getInstance()->unloadLevel($level);
     }
 }

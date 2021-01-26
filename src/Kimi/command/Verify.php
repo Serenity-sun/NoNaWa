@@ -6,6 +6,7 @@ namespace Kimi\command;
 
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
+use pocketmine\Server;
 
 trait Verify
 {
@@ -23,5 +24,14 @@ trait Verify
         }
 
         return true;
+    }
+
+
+    /*
+     * вернет сервер через синглтон
+     */
+    public function getServer(): Server
+    {
+        return Server::getInstance();
     }
 }

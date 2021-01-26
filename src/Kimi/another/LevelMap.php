@@ -2,7 +2,6 @@
 
 namespace Kimi\another;
 
-use http\Exception\InvalidArgumentException;
 use Kimi\generator\Nothing;
 use pocketmine\level\generator\normal\Normal;
 use pocketmine\Server;

@@ -16,8 +16,8 @@ class GenerateMap extends Command
         parent::__construct
         (
             $name,
-            "§rгенерация нового мира",
-            "§rиспользование: generate [имя мира] [тип генерации: nothing | default]"
+            "§r генерация нового мира",
+            "§r использование: generate [имя мира] [тип генерации: nothing | default]"
         );
     }
 
@@ -27,11 +27,11 @@ class GenerateMap extends Command
      */
     public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
-        if($this->checkOP($sender))
+        if(!$this->checkOP($sender))
             return;
 
         if(!isset($args[0])) {
-            $sender->sendMessage("§l§c|§f использование: generate [имя мира] [тип генерации: nothing | default]");
+            $sender->sendMessage("§l§e|§f использование: generate [имя мира] [тип генерации: nothing | default]");
             return;
         }
 

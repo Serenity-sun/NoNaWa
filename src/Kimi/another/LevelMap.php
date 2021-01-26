@@ -39,23 +39,4 @@ class LevelMap
 
         return Server::getInstance()->generateLevel($name, null, $class, $generator);
     }
-
-
-    /*
-     * выгружает мир
-     * принимает название мира и сохранение как аргумент
-     * ничего не возвращает
-     */
-    public function unload(string $name, bool $save = true): bool
-    {
-        $level = Server::getInstance()->getLevelByName($name);
-
-        if($level === null)
-            throw new InvalidArgumentException("мир с названием {$name} отсутствует");
-
-        if ($save === true)
-            $level->save(true);
-
-        return Server::getInstance()->unloadLevel($level);
-    }
 }

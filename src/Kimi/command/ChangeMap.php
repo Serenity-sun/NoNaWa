@@ -44,7 +44,7 @@ class ChangeMap extends Command
             return;
         }
 
-        $level = $this->getServer()->getLevelByName($args[1]);
+        $level = $this->getServer()->getLevelByName($args[0]);
 
         if($level === null){
             $sender->sendMessage("§l§c|§f такой мир отсутсвует");

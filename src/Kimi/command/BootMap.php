@@ -6,7 +6,6 @@ namespace Kimi\command;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\Server;
 
 class BootMap extends Command
 {
@@ -18,8 +17,8 @@ class BootMap extends Command
         parent::__construct
         (
             $name,
-            "§rзагрузка и выгрузка мира",
-            "§rиспользование: boot [имя мира] [загрузка = d | выгрузка = u]"
+            "§r загрузка и выгрузка мира",
+            "§r использование: boot [имя мира] [загрузка = d | выгрузка = u]"
         );
     }
 
@@ -29,11 +28,11 @@ class BootMap extends Command
      */
     public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
-        if($this->checkOP($sender))
+        if(!$this->checkOP($sender))
             return;
 
         if(!isset($args[0])) {
-            $sender->sendMessage("§l§c|§f использование: boot [имя мира] [загрузка = d | выгрузка = u]");
+            $sender->sendMessage("§l§e|§f использование: boot [имя мира] [загрузка = d | выгрузка = u]");
             return;
         }
 
@@ -42,7 +41,7 @@ class BootMap extends Command
             return;
         }
 
-        $server = Server::getInstance();
+        $server = $this->getServer();
 
         switch ($args[1])
         {
